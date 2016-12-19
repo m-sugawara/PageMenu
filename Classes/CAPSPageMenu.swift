@@ -57,31 +57,31 @@ class MenuItemView: UIView {
     }
 }
 
-public enum CAPSPageMenuOption {
-    case selectionIndicatorHeight(CGFloat)
-    case menuItemSeparatorWidth(CGFloat)
-    case scrollMenuBackgroundColor(UIColor)
-    case viewBackgroundColor(UIColor)
-    case bottomMenuHairlineColor(UIColor)
-    case selectionIndicatorColor(UIColor)
-    case menuItemSeparatorColor(UIColor)
-    case menuMargin(CGFloat)
-    case menuItemMargin(CGFloat)
-    case menuHeight(CGFloat)
-    case selectedMenuItemLabelColor(UIColor)
-    case unselectedMenuItemLabelColor(UIColor)
-    case useMenuLikeSegmentedControl(Bool)
-    case menuItemSeparatorRoundEdges(Bool)
-    case menuItemFont(UIFont)
-    case menuItemSeparatorPercentageHeight(CGFloat)
-    case menuItemWidth(CGFloat)
-    case enableHorizontalBounce(Bool)
-    case addBottomMenuHairline(Bool)
-    case menuItemWidthBasedOnTitleTextWidth(Bool)
-    case titleTextSizeBasedOnMenuItemWidth(Bool)
-    case scrollAnimationDurationOnMenuItemTap(Int)
-    case centerMenuItems(Bool)
-    case hideTopMenuBar(Bool)
+public struct CAPSPageMenuOption {
+    var selectionIndicatorHeight: CGFloat?
+    var menuItemSeparatorWidth: CGFloat?
+    var scrollMenuBackgroundColor: UIColor?
+    var viewBackgroundColor: UIColor?
+    var bottomMenuHairlineColor: UIColor?
+    var selectionIndicatorColor: UIColor?
+    var menuItemSeparatorColor: UIColor?
+    var menuMargin: CGFloat?
+    var menuItemMargin: CGFloat?
+    var menuHeight: CGFloat?
+    var selectedMenuItemLabelColor: UIColor?
+    var unselectedMenuItemLabelColor: UIColor?
+    var useMenuLikeSegmentedControl: Bool?
+    var menuItemSeparatorRoundEdges: Bool?
+    var menuItemFont: UIFont?
+    var menuItemSeparatorPercentageHeight: CGFloat?
+    var menuItemWidth: CGFloat?
+    var enableHorizontalBounce: Bool?
+    var addBottomMenuHairline: Bool?
+    var menuItemWidthBasedOnTitleTextWidth: Bool?
+    var titleTextSizeBasedOnMenuItemWidth: Bool?
+    var scrollAnimationDurationOnMenuItemTap: Int?
+    var centerMenuItems: Bool?
+    var hideTopMenuBar: Bool?
 }
 
 open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
@@ -161,7 +161,7 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
      :param: frame Frame for page menu view
      :param: options Dictionary holding any customization options user might want to set
      */
-    public init(viewControllers: [UIViewController], frame: CGRect, options: [String: AnyObject]?) {
+    public init(viewControllers: [UIViewController], frame: CGRect) {
         super.init(nibName: nil, bundle: nil)
         
         controllerArray = viewControllers
@@ -169,67 +169,85 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
         self.view.frame = frame
     }
     
-    public convenience init(viewControllers: [UIViewController], frame: CGRect, pageMenuOptions: [CAPSPageMenuOption]?) {
-        self.init(viewControllers:viewControllers, frame:frame, options:nil)
+    public convenience init(viewControllers: [UIViewController], frame: CGRect, pageMenuOptions: CAPSPageMenuOption) {
+        self.init(viewControllers:viewControllers, frame:frame)
         
-        if let options = pageMenuOptions {
-            for option in options {
-                switch (option) {
-                case let .selectionIndicatorHeight(value):
-                    selectionIndicatorHeight = value
-                case let .menuItemSeparatorWidth(value):
-                    menuItemSeparatorWidth = value
-                case let .scrollMenuBackgroundColor(value):
-                    scrollMenuBackgroundColor = value
-                case let .viewBackgroundColor(value):
-                    viewBackgroundColor = value
-                case let .bottomMenuHairlineColor(value):
-                    bottomMenuHairlineColor = value
-                case let .selectionIndicatorColor(value):
-                    selectionIndicatorColor = value
-                case let .menuItemSeparatorColor(value):
-                    menuItemSeparatorColor = value
-                case let .menuMargin(value):
-                    menuMargin = value
-                case let .menuItemMargin(value):
-                    menuItemMargin = value
-                case let .menuHeight(value):
-                    menuHeight = value
-                case let .selectedMenuItemLabelColor(value):
-                    selectedMenuItemLabelColor = value
-                case let .unselectedMenuItemLabelColor(value):
-                    unselectedMenuItemLabelColor = value
-                case let .useMenuLikeSegmentedControl(value):
-                    useMenuLikeSegmentedControl = value
-                case let .menuItemSeparatorRoundEdges(value):
-                    menuItemSeparatorRoundEdges = value
-                case let .menuItemFont(value):
-                    menuItemFont = value
-                case let .menuItemSeparatorPercentageHeight(value):
-                    menuItemSeparatorPercentageHeight = value
-                case let .menuItemWidth(value):
-                    menuItemWidth = value
-                case let .enableHorizontalBounce(value):
-                    enableHorizontalBounce = value
-                case let .addBottomMenuHairline(value):
-                    addBottomMenuHairline = value
-                case let .menuItemWidthBasedOnTitleTextWidth(value):
-                    menuItemWidthBasedOnTitleTextWidth = value
-                case let .titleTextSizeBasedOnMenuItemWidth(value):
-                    titleTextSizeBasedOnMenuItemWidth = value
-                case let .scrollAnimationDurationOnMenuItemTap(value):
-                    scrollAnimationDurationOnMenuItemTap = value
-                case let .centerMenuItems(value):
-                    centerMenuItems = value
-                case let .hideTopMenuBar(value):
-                    hideTopMenuBar = value
-                }
-            }
-            
-            if hideTopMenuBar {
-                addBottomMenuHairline = false
-                menuHeight = 0.0
-            }
+        let op = pageMenuOptions
+        if let value = op.selectionIndicatorHeight {
+            selectionIndicatorHeight = value
+        }
+        if let value = op.menuItemSeparatorWidth {
+            menuItemSeparatorWidth = value
+        }
+        if let value = op.scrollMenuBackgroundColor {
+            scrollMenuBackgroundColor = value
+        }
+        if let value = op.viewBackgroundColor {
+            viewBackgroundColor = value
+        }
+        if let value = op.bottomMenuHairlineColor {
+            bottomMenuHairlineColor = value
+        }
+        if let value = op.selectionIndicatorColor {
+            selectionIndicatorColor = value
+        }
+        if let value = op.menuItemSeparatorColor {
+            menuItemSeparatorColor = value
+        }
+        if let value = op.menuMargin {
+            menuMargin = value
+        }
+        if let value = op.menuItemMargin {
+            menuItemMargin = value
+        }
+        if let value = op.menuHeight {
+            menuHeight = value
+        }
+        if let value = op.selectedMenuItemLabelColor {
+            selectedMenuItemLabelColor = value
+        }
+        if let value = op.unselectedMenuItemLabelColor {
+            unselectedMenuItemLabelColor = value
+        }
+        if let value = op.useMenuLikeSegmentedControl {
+            useMenuLikeSegmentedControl = value
+        }
+        if let value = op.menuItemSeparatorRoundEdges {
+            menuItemSeparatorRoundEdges = value
+        }
+        if let value = op.menuItemFont {
+            menuItemFont = value
+        }
+        if let value = op.menuItemSeparatorPercentageHeight {
+            menuItemSeparatorPercentageHeight = value
+        }
+        if let value = op.menuItemWidth {
+            menuItemWidth = value
+        }
+        if let value = op.enableHorizontalBounce {
+            enableHorizontalBounce = value
+        }
+        if let value = op.addBottomMenuHairline {
+            addBottomMenuHairline = value
+        }
+        if let value = op.menuItemWidthBasedOnTitleTextWidth {
+            menuItemWidthBasedOnTitleTextWidth = value
+        }
+        if let value = op.titleTextSizeBasedOnMenuItemWidth {
+            titleTextSizeBasedOnMenuItemWidth = value
+        }
+        if let value = op.scrollAnimationDurationOnMenuItemTap {
+            scrollAnimationDurationOnMenuItemTap = value
+        }
+        if let value = op.centerMenuItems {
+            centerMenuItems = value
+        }
+        if let value = op.hideTopMenuBar {
+            hideTopMenuBar = value
+        }
+        if hideTopMenuBar {
+            addBottomMenuHairline = false
+            menuHeight = 0.0
         }
         
         setUpUserInterface()
