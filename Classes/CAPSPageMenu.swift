@@ -58,6 +58,8 @@ class MenuItemView: UIView {
 }
 
 public struct CAPSPageMenuOption {
+    public init() {
+    }
     var selectionIndicatorHeight: CGFloat?
     var menuItemSeparatorWidth: CGFloat?
     var scrollMenuBackgroundColor: UIColor?
