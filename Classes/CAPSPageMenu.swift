@@ -58,32 +58,31 @@ class MenuItemView: UIView {
 }
 
 public struct CAPSPageMenuOption {
-    public init() {
-    }
-    var selectionIndicatorHeight: CGFloat?
-    var menuItemSeparatorWidth: CGFloat?
-    var scrollMenuBackgroundColor: UIColor?
-    var viewBackgroundColor: UIColor?
-    var bottomMenuHairlineColor: UIColor?
-    var selectionIndicatorColor: UIColor?
-    var menuItemSeparatorColor: UIColor?
-    var menuMargin: CGFloat?
-    var menuItemMargin: CGFloat?
-    var menuHeight: CGFloat?
-    var selectedMenuItemLabelColor: UIColor?
-    var unselectedMenuItemLabelColor: UIColor?
-    var useMenuLikeSegmentedControl: Bool?
-    var menuItemSeparatorRoundEdges: Bool?
-    var menuItemFont: UIFont?
-    var menuItemSeparatorPercentageHeight: CGFloat?
-    var menuItemWidth: CGFloat?
-    var enableHorizontalBounce: Bool?
-    var addBottomMenuHairline: Bool?
-    var menuItemWidthBasedOnTitleTextWidth: Bool?
-    var titleTextSizeBasedOnMenuItemWidth: Bool?
-    var scrollAnimationDurationOnMenuItemTap: Int?
-    var centerMenuItems: Bool?
-    var hideTopMenuBar: Bool?
+    public init() {}
+    public var selectionIndicatorHeight: CGFloat?
+    public var menuItemSeparatorWidth: CGFloat?
+    public var scrollMenuBackgroundColor: UIColor?
+    public var viewBackgroundColor: UIColor?
+    public var bottomMenuHairlineColor: UIColor?
+    public var selectionIndicatorColor: UIColor?
+    public var menuItemSeparatorColor: UIColor?
+    public var menuMargin: CGFloat?
+    public var menuItemMargin: CGFloat?
+    public var menuHeight: CGFloat?
+    public var selectedMenuItemLabelColor: UIColor?
+    public var unselectedMenuItemLabelColor: UIColor?
+    public var useMenuLikeSegmentedControl: Bool?
+    public var menuItemSeparatorRoundEdges: Bool?
+    public var menuItemFont: UIFont?
+    public var menuItemSeparatorPercentageHeight: CGFloat?
+    public var menuItemWidth: CGFloat?
+    public var enableHorizontalBounce: Bool?
+    public var addBottomMenuHairline: Bool?
+    public var menuItemWidthBasedOnTitleTextWidth: Bool?
+    public var titleTextSizeBasedOnMenuItemWidth: Bool?
+    public var scrollAnimationDurationOnMenuItemTap: Int?
+    public var centerMenuItems: Bool?
+    public var hideTopMenuBar: Bool?
 }
 
 open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
